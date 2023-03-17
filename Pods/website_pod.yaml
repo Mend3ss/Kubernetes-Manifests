@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: website-pod
+spec:
+  containers:
+    - name: website-container
+      image: joaomendes3822/web-site-1:1

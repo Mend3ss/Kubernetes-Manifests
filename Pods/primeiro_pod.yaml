@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+#Agora precisaremos dar um tab. Pois o parametro <name> pertence a metadata.
+  name: primeiro-pod
+spec:
+#A mesma coisa se repete aqui. O parametro container pertence a spec, então devemos dar um tab
+  containers:
+#Vamos dar mais um tab aqui, os parametros name e image pertencem a containers
+    - name: nginx-container
+      image: nginx:latest
