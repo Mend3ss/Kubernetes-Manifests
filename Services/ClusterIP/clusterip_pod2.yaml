@@ -1,0 +1,21 @@
+#Primeiro vamos definir a versão da API
+apiVersion: v1
+
+#Agora vamos especificar o TIPO de recurso que vamos criar
+kind: Service
+
+#O nome dele
+metadata:
+  name: pod2-clusterip
+
+#As especificações do recurso
+spec:
+#Será um ClusterIP. Ele irá fornecer um IP fixo para que outros Pods se conectem ao Pod2 com mais facilidade e confiabilidade
+  type: ClusterIP
+
+#Vamos buscar a label do nosso pod2
+  selector:
+    pod2-label: pod2-label
+  ports:
+    - port: 9000 #Porta que o Cluster irá ouvir
+      targetPort: 80 #Porta do Pod que terá os pacotes encaminhados

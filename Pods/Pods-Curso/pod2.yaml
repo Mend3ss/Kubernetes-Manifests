@@ -1,0 +1,23 @@
+#Definindo a versão da API
+apiVersion: v1
+
+#Definindo o TIPO de recurso
+kind: Pod
+
+#Nome do recurso
+metadata:
+  name: pod2
+
+#Adicionaremos mais um parametro que será muito importante. As Labels.
+#As Labels servem como Tags e podemos usa-las para referenciar recursos em outros.
+  labels:
+#Você pode escolher um nome para a sua label. Nesse caso será pod2-label
+    pod2-label: pod2-label
+
+#Especificação do recurso
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80 #Porta que o container dentro do Pod estará ouvindo
