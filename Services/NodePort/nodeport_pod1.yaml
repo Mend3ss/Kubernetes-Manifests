@@ -1,0 +1,24 @@
+#Vamos começar definindo a versão da API
+apiVersion: v1
+
+#Agora vamos dizer qual é o TIPO de recurso que vamos criar
+kind: Service
+
+#O nome do Serviço
+metadata:
+  name: nodeport-pod1
+
+#Especificações do recurso
+
+spec:
+
+#Definindo o tipo do Service
+  type: NodePort
+  ports:
+    - port: 80 #Porta que o NodePort escuta dentro do Cluster
+      targetPort: 80 #Porta que o NodePort encaminhará requisições
+      nodePort: 30000 #Porta que o NodePort irá escutar fora do Cluster (range - 30000-32767)
+
+#Vamos procurar pela Label do Pod
+  selector:
+    pod1-label: pod1-label

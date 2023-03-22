@@ -1,0 +1,22 @@
+#Definindo a versão da API
+apiVersion: v1
+
+#Definindo o TIPO de recurso
+kind: Pod
+
+#Nome do recurso
+metadata:
+  name: pod1
+
+#Colocando uma Label no recurso para referenciar no NodePort depois
+  labels:
+    pod1-label: pod1-label
+
+#Especificações do recurso
+
+spec:
+  containers:
+    - name: nginx-pod
+      image: nginx:latest
+      ports:
+        - containerPort: 80 #Porta que o container está ouvindo
