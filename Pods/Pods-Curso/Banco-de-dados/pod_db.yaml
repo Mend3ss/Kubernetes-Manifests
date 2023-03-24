@@ -10,3 +10,15 @@ spec:
       image: aluracursos/mysql-db:1
       ports:
         - containerPort: 3306
+
+
+# #Usando "env" para definir variaveis de ambiente para o nosso pod
+#       env:
+#         - name: "MYSQL_ROOT_PASSWORD" #Nome da nossa variavel
+#           value: q1w2e3r4 #valor da nossa variavel
+#         - name: "MYSQL_DATABASE" #Nome da nossa variavel
+#           value: "empresa"
+#         - name: "MYSQL_PASSWORD"
+#           value: q1w2e3r4
+
+##Vamos utilizar um ConfigMap para isso 
