@@ -12,6 +12,19 @@ spec:
         - containerPort: 3306
 
 
+      envFrom: #Com esse parâmetro nós podemos referenciar todas as variaveis de um ConfigMap
+       - configMapRef: #Qual é o configmap que você quer referenciar?
+          name: configmap-db #Nome do ConfigMap que vamos utilizar
+
+
+
+
+
+
+
+
+
+
 # #Usando "env" para definir variaveis de ambiente para o nosso pod
 #       env:
 #         - name: "MYSQL_ROOT_PASSWORD" #Nome da nossa variavel
