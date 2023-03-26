@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-clusterip
+  name: clusterip-db
 spec:
   type: ClusterIP
   ports:
