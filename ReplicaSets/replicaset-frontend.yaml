@@ -4,7 +4,7 @@ apiVersion: apps/v1
 #A segunda mudança sera no tipo de Recurso que vamos criar, que dessa vez não sera um Service
 kind: ReplicaSet
 metadata:
-  name: replicaset-frontend
+  name: pod-portal-noticias-replicaset #Esse é o nome dos Pods que serão criados com esse ReplicaSet
 
 spec:
 
