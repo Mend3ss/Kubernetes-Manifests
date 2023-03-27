@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: configmap-frontend
 data:
-  IP_SISTEMA: http://localhost:30001 #Se fosse no Linux seria o Internal IP + porta
+#Se fosse no Linux seria o Internal IP + porta
+  IP_SISTEMA: http://localhost:30001
