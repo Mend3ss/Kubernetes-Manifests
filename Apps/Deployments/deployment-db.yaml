@@ -6,26 +6,26 @@ kind: Deployment
 
 #vamos definir o nome do Deployment
 metadata:
-  name: pod-portal-noticias-deployment
+  name: pod-db-noticias-deployment
 
 spec: #Especificação do nosso Pod
   replicas: 3
   template:
     metadata:
-      name: pod-portal-noticias
+      name: pod-db-noticias
       labels:
-        portal-noticias: portal-noticias
+        db-noticias: db-noticias
 
 #Especificações do container
     spec:
       containers:
-        - name: container-portal-noticias
-          image: aluracursos/portal-noticias:1
+        - name: db-container-noticias
+          image: aluracursos/mysql-db:1
           ports:
-            - containerPort: 80
+            - containerPort: 3306
           envFrom:
             - configMapRef:
-                name: configmap-frontend
+                name: configmap-db
   selector:
     matchLabels:
-      portal-noticias: portal-noticias
+      db-noticias: db-noticias
