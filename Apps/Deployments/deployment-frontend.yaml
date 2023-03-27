@@ -1,0 +1,28 @@
+#Assim como o RS, o Deployment usa outra versão da API
+apiVersion: apps/v1
+
+#E também tem um TIPO de recurso exclusivo dele, o Deployment
+kind: Deployment
+
+#vamos definir o nome do Deployment
+metadata:
+  name: pod-portal-noticias-deployment
+
+spec: #Especificação do nosso Pod
+  replicas: 3
+  template:
+    metadata:
+      name: pod-portal-noticias
+      labels:
+        portal-noticias: portal-noticias
+
+#Especificações do container
+    spec:
+      containers:
+        - name: container-portal-noticias
+          image: aluracursos/portal-noticias:1
+          ports:
+            - containerPort: 80
+  selector:
+    matchLabels:
+      portal-noticias: portal-noticias
