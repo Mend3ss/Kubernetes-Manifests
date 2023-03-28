@@ -9,7 +9,7 @@ metadata:
   name: pod-db-noticias-deployment
 
 spec: #Especificação do nosso Pod
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       name: pod-db-noticias
@@ -21,11 +21,28 @@ spec: #Especificação do nosso Pod
       containers:
         - name: db-container-noticias
           image: aluracursos/mysql-db:1
+
+          #Apontando para o volume
+          volumeMounts:
+            - mountPath: /db-container-volume #caminho onde o volume será criado
+              name: db-volume #Nome do volume que vamos usar.
+
           ports:
             - containerPort: 3306
+
           envFrom:
             - configMapRef:
                 name: configmap-db
+      
+      #Criando um Volume para persistir dados do container. O Bloco de Volume deve estar alinhado ao de Container
+      volumes:
+        - name: db-volume #nome do nosso volume
+          hostPath: #Caminho onde esse volume vai estar na nossa máquina
+            path: /c/Users/joao.mendes/Desktop/Alura/Devops/Kubernetes-Yaml/Manifest/Volumes/db-volume #O diretório deve existir na máquina
+            type: Directory #Tipo de volume
+                  #Podemos usar o DirectoryOrCreate para criar um diretório caso ele não exista
+  
+
   selector:
     matchLabels:
       db-noticias: db-noticias

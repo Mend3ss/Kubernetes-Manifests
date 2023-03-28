@@ -9,7 +9,7 @@ metadata:
   name: pod-sistema-noticias-deployment
 
 spec: #Especificação do nosso Pod
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       name: pod-sistema-noticias
@@ -21,11 +21,22 @@ spec: #Especificação do nosso Pod
       containers:
         - name: container-sistema-noticias
           image: aluracursos/sistema-noticias:1
+
+          #apontando para o volume
+          volumeMounts:
+            - mountPath: /backend-volume
+              name: backend-volume
+
           ports:
             - containerPort: 80
           envFrom:
             - configMapRef:
                 name: configmap-backend
+      volumes:
+        - name: backend-volume
+          hostPath:
+            path: /c/Users/joao.mendes/Desktop/Alura/Devops/Kubernetes-Yaml/Manifest/Volumes/backend-volume
+            type: Directory #O TYPE DirectOrCreate vai verificar se o diretório já existe, caso não exista ela vai criar
   selector:
     matchLabels:
       sistema-noticias: sistema-noticias

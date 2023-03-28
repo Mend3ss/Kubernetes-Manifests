@@ -9,7 +9,7 @@ metadata:
   name: pod-portal-noticias-deployment
 
 spec: #Especificação do nosso Pod
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       name: pod-portal-noticias
