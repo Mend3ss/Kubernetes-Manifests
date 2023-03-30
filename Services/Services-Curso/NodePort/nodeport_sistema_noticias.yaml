@@ -8,4 +8,4 @@ spec:
     - port: 80 #Podemos utilizar a mesma porta do outro NodePort, pois o IP é diferente
       nodePort: 30001
   selector:
-    sistema-noticias: sistema-noticias
+    app: sistema-noticias
