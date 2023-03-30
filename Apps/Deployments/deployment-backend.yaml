@@ -10,7 +10,8 @@ metadata:
 
 spec: #Especificação do nosso Pod
   replicas: 1
-  template:
+
+  template: #Esse bloco representa as configurações presentes no nosso Pod
     metadata:
       name: pod-sistema-noticias
       labels:
