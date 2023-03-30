@@ -1,0 +1,16 @@
+#O Persistent Volume está na versão padrão da API.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: persistent-volume-claim
+
+spec:
+
+  #O primeiro passo para conectar o nosso Claim e o nosso PV é especificar a Permissão que deve ser a MESMA.
+  accessModes:
+    - ReadWriteOnce
+  
+  #Agora devemos dizer quais são as especificações do PV que estamos buscando.
+  resouces:
+    requests:
+      storage: 10Gi #O tamanho deve ser o mesmo do PV.

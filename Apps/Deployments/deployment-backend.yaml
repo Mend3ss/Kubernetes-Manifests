@@ -14,7 +14,7 @@ spec: #Especificação do nosso Pod
     metadata:
       name: pod-sistema-noticias
       labels:
-        sistema-noticias: sistema-noticias
+        app: sistema-noticias
 
 #Especificações do container
     spec:
@@ -39,4 +39,4 @@ spec: #Especificação do nosso Pod
             type: Directory #O TYPE DirectOrCreate vai verificar se o diretório já existe, caso não exista ela vai criar
   selector:
     matchLabels:
-      sistema-noticias: sistema-noticias
+      app: sistema-noticias

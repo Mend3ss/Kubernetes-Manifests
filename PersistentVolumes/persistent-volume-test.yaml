@@ -1,0 +1,20 @@
+#O Persistent Volume está na versão padrão da API.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: persistent-volume
+spec:
+  capacity: #Devemos dizer qual o tamanho do nosso disco.
+    storage: 10Gi #Qual o tamanho do disco/Quanto ele vai usar do disco.
+
+
+  #Permissionamento do Volume. Neste caso estou permitindo Ler e escrever um por um (um container por vez).
+  accessModes:
+    - ReadWriteOnce #Veja com mais detalhes essas permissões depois.
+  
+  #Nome do nosso disco
+  gcePersistentDisk:
+    pdName: persistent-volume-cloud #O nome deve ser o mesmo do disco na cloud.
+
+    #Tipo de armazenamento.
+    fsType: ext4
