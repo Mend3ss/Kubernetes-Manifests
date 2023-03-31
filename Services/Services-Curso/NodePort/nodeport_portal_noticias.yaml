@@ -10,4 +10,4 @@ spec:
       targetPort: 80 #Porta que ele mandará as requisições
       nodePort: 30000 #Porta que ele escutara no mundo exterior
   selector:
-    portal-noticias: portal-noticias
+    app: portal-noticias
