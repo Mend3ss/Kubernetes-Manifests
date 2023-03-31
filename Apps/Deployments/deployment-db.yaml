@@ -14,7 +14,7 @@ spec: #Especificação do nosso Pod
     metadata:
       name: pod-db-noticias
       labels:
-        db-noticias: db-noticias
+        app: db-noticias
 
 #Especificações do container
     spec:
@@ -45,4 +45,4 @@ spec: #Especificação do nosso Pod
 
   selector:
     matchLabels:
-      db-noticias: db-noticias
+      app: db-noticias
