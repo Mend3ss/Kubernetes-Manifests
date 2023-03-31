@@ -14,7 +14,7 @@ spec: #Especificação do nosso Pod
     metadata:
       name: pod-portal-noticias
       labels:
-        portal-noticias: portal-noticias
+        app: portal-noticias
 
 #Especificações do container
     spec:
@@ -28,4 +28,4 @@ spec: #Especificação do nosso Pod
                 name: configmap-frontend
   selector:
     matchLabels:
-      portal-noticias: portal-noticias
+      app: portal-noticias

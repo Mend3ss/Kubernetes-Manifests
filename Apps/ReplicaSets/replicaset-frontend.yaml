@@ -13,7 +13,7 @@ spec:
     metadata: #nome do pod
       name: pod-portal-noticias
       labels:
-        portal-noticias: portal-noticias
+        app: portal-noticias
 
 #Quais são as especificações desses Pods?
     spec:
@@ -31,4 +31,4 @@ spec:
 #Assim como os Services, nós devemos buscar pelas labels do Pod
   selector:
     matchLabels: #As Labels devem coencidir com a seguinte:
-      portal-noticias: portal-noticias
+      app: portal-noticias
