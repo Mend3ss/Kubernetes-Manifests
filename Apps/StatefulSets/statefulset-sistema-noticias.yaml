@@ -18,6 +18,54 @@ spec:
           envFrom:
             - configMapRef:
                 name: configmap-backend
+
+                #Montando volumes dentro do container
+          volumeMounts:
+            - name: imagens
+              mountPath: /var/www/html/uploads #Caminho onde nos vamos salvar as nossas imagens
+            - name: sessao
+              mountPath: /tmp #Caminho onde a nossa sessao ficara salva
+
+          #Definindo Liveness para checar a saúde do container
+          livenessProbe:
+            httpGet: #Temos três métodos para verificar a saúde do Container: HTTP, Comando e TCP
+              path: / #Caminho que o Liveness vai verificar
+              port: 80 #Porta que nosso container está usando
+            
+            periodSeconds: 10 #De quanto em quanto tempo ele vai verficar
+
+            failureThreshold: 3 #Quantos erros vão ser toleraveos antes de reiniciar
+
+            initialDelaySeconds: 20 #Quanto tempo o liveness vai esperar para começar as verificações após o container subir
+
+
+          #Criando Readiness
+          readinessProbe:
+            httpGet:
+              path: /inserir_noticias.php #Caminho que o Readiness irá verificar
+              port: 80
+            periodSeconds: 10 #De quanto em quanto tempo ele vai verficar
+
+            failureThreshold: 5 #Quantos erros vão ser toleraveos antes de reiniciar
+
+            initialDelaySeconds: 3 #Quanto tempo o liveness vai esperar para começar as verificações após o container subir
+
+          
+          #Declarando métricas para o HPA
+          resources:
+            requests: # Qual o requiremento para o escalonamento?
+              cpu: 10m
+
+      #Declarando volumes
+      volumes:
+        - name: imagens
+          persistentVolumeClaim:
+            claimName: pvc-imagens-sistema
+        - name: sessao
+          persistentVolumeClaim:
+            claimName: pvc-sessao-sistema
+
+
   selector:
     matchLabels:
       app: sistema-noticias

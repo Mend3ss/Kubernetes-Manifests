@@ -1,0 +1,15 @@
+#Esse PVC vai nos ajudar a criar um PersistentVolume que irá persistir as nossas imagens no ambiente.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-imagens-sistema
+
+spec:
+
+  #Devemos especificar a permissão que teremos no volume.
+  accessModes:
+    - ReadWriteOnce #Essa permissão diz que somente um pod por vez consegue ler e escrever no volume
+
+  resources:
+    requests:
+      storage: 1Gi

@@ -1,0 +1,27 @@
+#Vamos utilizar uma nova versão da API
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-backend
+
+spec:
+  scaleTargetRef: #Funciona como um Selector ou um MatchLabels
+
+    apiVersion: apps/v1 #Qual a versão da API do recurso que estamos buscando?
+
+    kind: StatefulSet #Qual o TIPO de recurso que queremos escalar?
+
+    name: sistema-noticias-statefulset #Nome do Deployment que queremos usar
+
+  minReplicas: 1 #Número minimo de replicas que queremos manter
+  maxReplicas: 3 #Número máximo de replicas que queremos
+
+  metrics: #Quais são as métricas que queremos observar?
+    
+    - type: Resource #Vamos observar um recurso dentro do pod
+      resource:
+        name: cpu #Nome do recurso
+        target:
+          type: Utilization #Ok, vamos usar o recurso cpu. Mas baseado em que? <Na utilização>
+          ave rageUtilization: 50 #Qual o uso médio que queremos manter?

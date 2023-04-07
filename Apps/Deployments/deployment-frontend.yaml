@@ -26,6 +26,31 @@ spec: #Especificação do nosso Pod
           envFrom:
             - configMapRef:
                 name: configmap-frontend
+          
+          #Definindo Liveness para checar a saúde do container
+          livenessProbe:
+            httpGet: #Temos três métodos para verificar a saúde do Container: HTTP, Comando e TCP
+              path: / #Caminho que o Liveness vai verificar
+              port: 80 #Porta que nosso container está usando
+            
+            periodSeconds: 10 #De quanto em quanto tempo ele vai verficar
+
+            failureThreshold: 3 #Quantos erros vão ser toleraveos antes de reiniciar
+
+            initialDelaySeconds: 20 #Quanto tempo o liveness vai esperar para começar as verificações após o container subir
+
+
+
+          #Criando Readiness
+          readinessProbe:
+            httpGet:
+              path: / #Caminho que o Readiness irá verificar
+              port: 80
+            periodSeconds: 10 #De quanto em quanto tempo ele vai verficar
+
+            failureThreshold: 5 #Quantos erros vão ser toleraveos antes de reiniciar
+            
+            initialDelaySeconds: 3 #Quanto tempo o liveness vai esperar para começar as verificações após o container subir
   selector:
     matchLabels:
       app: portal-noticias
